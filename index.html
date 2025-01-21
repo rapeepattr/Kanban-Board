@@ -8,6 +8,12 @@
     </head>
     <body>
         <h1 class="main-title">แผนผังการทำงาน</h1>
+
+        <form class="task-form" id="task-form" onsubmit="addTask(event)">
+            <input type="text" id="new-task" class="new-task" />
+            <button class="submit-btn" type="submit">เพิ่มงานใหม่</button>
+        </form>
+
         <div class="drag-container">
             <ul class="drag-list">
                 <!-- Category 1 -->

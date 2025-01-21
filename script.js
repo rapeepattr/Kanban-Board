@@ -16,7 +16,6 @@ drag_list.forEach((list) => {
 
 function onDragStart() {   
     selectItem = this
-    console.log('selectItem', selectItem)
 }
 
 function onDragOver(e) {
@@ -32,5 +31,24 @@ function onDrop() {
     selectItem = null
 }
 
-console.log(drag_item)
-console.log(drag_list)
+function addTask(event) {
+    event.preventDefault(); 
+    const input = document.getElementById('new-task'); 
+    const taskText = input.value.trim();
+
+    if (taskText) {
+        const newTask = document.createElement('li');
+        newTask.classList.add('drag-item'); 
+        newTask.draggable = true; 
+        newTask.textContent = taskText; 
+
+        newTask.addEventListener('dragstart', onDragStart);
+        const backlogList = document.getElementById('backlog-list');
+        backlogList.appendChild(newTask);
+
+        input.value = '';
+    } else {
+        alert('Please enter a task.');
+    }
+}
+
